@@ -25,6 +25,7 @@
 ## 🛠️ 개발 환경
 
 - Node.js (최신 LTS)
+- Figma (디자인)
 - React (Vite 기반)
 - 파일 구조 예시:
 
