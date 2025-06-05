@@ -16,6 +16,11 @@ function App() {
         jobTitle="부리부리"
         contact="010-9292-9292"
       />
+      <BusinessCard
+        name="김민우"
+        jobTitle="로즈다방 에이스 미스킴"
+        contact="010-5877-3385"
+      />
     </div>
   );
 }
