@@ -1,36 +1,36 @@
 import React, { useState } from 'react';
 
-function BusinessCard({ name, job, contact }) {
-  const [likes, setLikes] = useState(0);           // 숫자 상태
-  const [liked, setLiked] = useState(false);       // ❤️ / 🤍 상태
+function IntroForm({ onSubmit }) {
+  const [name, setName] = useState('');
+  const [intro, setIntro] = useState('');
 
-  const toggleLike = () => {
-    if (liked) {
-      setLikes(likes - 1);
-    } else {
-      setLikes(likes + 1);
-    }
-    setLiked(!liked);
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 새로고침 방지
+    onSubmit({ name, intro }); // 부모 컴포넌트로 전달
+    setName('');
+    setIntro('');
   };
 
   return (
-    <div style={{
-      border: '1px solid gray',
-      padding: '10px',
-      margin: '10px',
-      borderRadius: '8px',
-      width: '240px'
-    }}>
-      <h2>{name}</h2>
-      <p>직업: {job}</p>
-      <p>연락처: {contact}</p>
-
-      {/* ❤️ 좋아요 버튼 */}
-      <button onClick={toggleLike} style={{ fontSize: '20px', cursor: 'pointer' }}>
-        {liked ? '❤️' : '🤍'} 좋아요 {likes}
-      </button>
-    </div>
+    <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
+      <div>
+        <label>이름: </label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>자기소개: </label>
+        <textarea
+          value={intro}
+          onChange={(e) => setIntro(e.target.value)}
+        />
+      </div>
+      <button type="submit">제출</button>
+    </form>
   );
 }
 
-export default BusinessCard;
+export default IntroForm;

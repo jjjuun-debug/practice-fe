@@ -1,22 +1,25 @@
-import React from 'react';
-import BusinessCard from '../components/BusinessCard';
+import React, { useState } from 'react';
+import IntroForm from '../components/BusinessCard';
 
 function Home() {
+  const [submittedData, setSubmittedData] = useState(null);
+
+  const handleFormSubmit = (data) => {
+    setSubmittedData(data); // 결과 저장
+  };
+
   return (
-    <div>
-      <h1 style={{ textAlign: 'center' }}>나만의 명함</h1>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <BusinessCard
-          name="홍길동"
-          job="프론트엔드 개발자"
-          contact="hong@example.com"
-        />
-        <BusinessCard
-          name="김영희"
-          job="백엔드 개발자"
-          contact="kim@example.com"
-        />
-      </div>
+    <div style={{ padding: '20px' }}>
+      <h1>자기소개 입력</h1>
+      <IntroForm onSubmit={handleFormSubmit} />
+
+      {submittedData && (
+        <div style={{ marginTop: '20px', border: '1px solid gray', padding: '10px' }}>
+          <h2>제출된 정보</h2>
+          <p><strong>이름:</strong> {submittedData.name}</p>
+          <p><strong>자기소개:</strong> {submittedData.intro}</p>
+        </div>
+      )}
     </div>
   );
 }
