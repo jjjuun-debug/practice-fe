@@ -11,3 +11,12 @@ function BusinessCard(props) {
 }
 
 export default BusinessCard;
+
+/*
+
+    <div className='app-container'>
+      <BusinessCard name = "김민우" job = "선생님" contact = "112" />
+      <BusinessCard name = "고경민" job = "(진)군인" contact = "119" />
+    </div>
+
+*/
