@@ -1,36 +1,45 @@
+// src/components/TodoList.jsx
 import React, { useState } from 'react';
 
-function IntroForm({ onSubmit }) {
-  const [name, setName] = useState('');
-  const [intro, setIntro] = useState('');
+function TodoList() {
+  const [input, setInput] = useState('');
+  const [todos, setTodos] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // 새로고침 방지
-    onSubmit({ name, intro }); // 부모 컴포넌트로 전달
-    setName('');
-    setIntro('');
+  const handleAdd = () => {
+    if (input.trim() === '') return;
+    const newTodo = { id: Date.now(), text: input };
+    setTodos([...todos, newTodo]);
+    setInput('');
+  };
+
+  const handleDelete = (id) => {
+    const newTodos = todos.filter(todo => todo.id !== id);
+    setTodos(newTodos);
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
-      <div>
-        <label>이름: </label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>자기소개: </label>
-        <textarea
-          value={intro}
-          onChange={(e) => setIntro(e.target.value)}
-        />
-      </div>
-      <button type="submit">제출</button>
-    </form>
+    <div style={{ padding: '20px' }}>
+      <h2>📝 TODO 리스트</h2>
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="할 일을 입력하세요"
+      />
+      <button onClick={handleAdd}>추가</button>
+
+      <ul>
+        {todos.map(todo => (
+          <li key={todo.id}>
+            {todo.text}
+            <button onClick={() => handleDelete(todo.id)} style={{ marginLeft: '10px' }}>
+              삭제
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
-export default IntroForm;
+export default TodoList;

@@ -1,8 +1,9 @@
+// src/App.jsx
 import React from 'react';
-import Home from './pages/Home';
+import TodoList from './components/BusinessCard';
 
 function App() {
-  return <Home />;
+  return <TodoList />;
 }
 
 export default App;
