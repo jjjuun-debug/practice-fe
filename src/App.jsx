@@ -2,16 +2,13 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import UserProfile from "./components/day3/UserProfile.jsx"
+import TodoList from "./components/day4/TodoList.jsx"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Self-Introduction Page</h1>
-      </header>
+    <div className="TodoList">
       <main>
-        <UserProfile />
+        <TodoList />
       </main>
     </div>
   );
