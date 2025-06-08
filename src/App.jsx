@@ -3,24 +3,50 @@ import './App.css';
 import {useState} from 'react';
 function App() {
 
-  let name = '박주영';
-  let job = '개발자꿈나무';
-  let call = '010-6868-3956';
-  let [heart,plus] = useState(0);
+  let [name,setName] = useState('');
 
-  
+  const onChange = (e) =>{
+    setName(e.target.value);
+  }
+  const onReset = () =>{
+    setName('');
+  }
+
+ 
+
   return (
     <div className="App">
       <div className="black-nav">
-        <h4 style={{color:'red',fondSize:'16px'}}>
-          명함</h4>
+        <h4 style={{color:'yellow',fondSize:'16px'}}>
+          자기소개</h4>
       </div>
-      <div className="mainsytle-nav">
-        <h3>{name} <span onClick={()=>{plus(heart+1)}}>❤️</span> {heart} </h3>
-        <h4>{job}</h4>
-        <h5>📞{call}</h5>
+
+      <div>
+        <span>입력 : </span>
+        <input 
+        placeholder='이름과 소개를 입력하세요.'
+        type = "text"
+        value = {name}
+        onChange={onChange}
+        />  
+        
+        
+        <div>
+          <button onClick={onReset}>초기화</button>
+        </div>
+
+        <div>
+          
+          <b>{name}</b>
+        </div>
+        
       </div>
-      
+
+      <div>
+
+      </div>
+       
+
     </div>
     
   );
