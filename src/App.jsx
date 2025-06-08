@@ -2,70 +2,25 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  let [name, setName] = useState('');
-  let [todo, setTodo] = useState([]);
-
-  const onChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const Add = () => {
-    if (name.trim() === '') return;
-
-    const newTodo = {
-      id: Date.now(),
-      text: name,
-    };
-
-    setTodo([...todo, newTodo]);
-    setName('');
-  };
-
-  const deleteTodo = (id) => {
-    const newTodos = todo.filter(item => item.id !== id);
-    setTodo(newTodos);
-  };
+  const [글귀, set글귀] = useState(['안녕하세요', '행복하세요', '걱정마세요','']);
+  const [num, setNum] = useState(3);
 
   return (
-    <div className="App">
-      <div className="black-nav">
-        <h4 style={{ color: 'yellow', fontSize: '16px' }}>
-          TODOLIST
-        </h4>
+    <>
+      <div className="App">
+        <h4>오늘의 글귀를 뽑아보세요.</h4>
       </div>
-
-      <div>
-        <span>입력 : </span>
-        <input
-          placeholder="할 일을 입력하세요."
-          type="text"
-          value={name}
-          onChange={onChange}
-        />
-
+      <div className="list">
         <div>
-          <button onClick={Add}>추가</button>
+          <h4>{글귀[num]}</h4>
         </div>
-
+        <div>
+          <span onClick={() => setNum(0)} style={{ cursor: 'pointer', marginRight: '10px' }}>❤️</span>
+          <span onClick={() => setNum(1)} style={{ cursor: 'pointer', marginRight: '10px' }}>🤍</span>
+          <span onClick={() => setNum(2)} style={{ cursor: 'pointer' }}>💙</span>
+        </div>
       </div>
-
-      <div>
-        <h5>할 일 목록</h5>
-        <ul>
-          {todo.map(item => (
-            <li key={item.id}>
-              {item.text}
-              <button
-                style={{ marginLeft: '10px', color: 'red' }}
-                onClick={() => deleteTodo(item.id)}
-              >
-                삭제
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    </>
   );
 }
 
