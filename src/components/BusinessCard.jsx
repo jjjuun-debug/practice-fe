@@ -1,45 +1,27 @@
-// src/components/TodoList.jsx
 import React, { useState } from 'react';
 
-function TodoList() {
-  const [input, setInput] = useState('');
-  const [todos, setTodos] = useState([]);
-
-  const handleAdd = () => {
-    if (input.trim() === '') return;
-    const newTodo = { id: Date.now(), text: input };
-    setTodos([...todos, newTodo]);
-    setInput('');
-  };
-
-  const handleDelete = (id) => {
-    const newTodos = todos.filter(todo => todo.id !== id);
-    setTodos(newTodos);
-  };
+function TabUI() {
+  const [activeTab, setActiveTab] = useState(1); // 기본 탭 1 선택
 
   return (
     <div style={{ padding: '20px' }}>
-      <h2>📝 TODO 리스트</h2>
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="할 일을 입력하세요"
-      />
-      <button onClick={handleAdd}>추가</button>
+      <h2>🧭 간단한 탭 UI</h2>
 
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id}>
-            {todo.text}
-            <button onClick={() => handleDelete(todo.id)} style={{ marginLeft: '10px' }}>
-              삭제
-            </button>
-          </li>
-        ))}
-      </ul>
+      {/* 버튼 3개 */}
+      <div>
+        <button onClick={() => setActiveTab(1)}>Tab 1</button>
+        <button onClick={() => setActiveTab(2)}>Tab 2</button>
+        <button onClick={() => setActiveTab(3)}>Tab 3</button>
+      </div>
+
+      <hr />
+
+      {/* 조건에 따라 다른 내용 보여주기 */}
+      {activeTab === 1 && <p>📄 탭 1의 내용입니다</p>}
+      {activeTab === 2 && <p>📄 탭 2의 내용입니다</p>}
+      {activeTab === 3 && <p>📄 탭 3의 내용입니다</p>}
     </div>
   );
 }
 
-export default TodoList;
+export default TabUI;
