@@ -1,8 +1,8 @@
 import React from 'react';
-import TabUI from './components/BusinessCard'; // 경로 확인!
+import ImageGallery from './components/BusinessCard'; // 경로 확인!
 
 function App() {
-  return <TabUI />;
+  return <ImageGallery />;
 }
 
 export default App;
