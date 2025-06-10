@@ -2,13 +2,13 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import UserProfile from "./components/day5/Button.jsx"
+import Gallery from "./components/day6/gallery.jsx"
 
 function App() {
   return (
-    <div className="UserProfile">
+    <div className="gallery">
       <main>
-        <UserProfile />
+        <Gallery />
       </main>
     </div>
   );
