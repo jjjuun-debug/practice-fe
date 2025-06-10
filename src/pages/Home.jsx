@@ -1,8 +1,8 @@
 import React from 'react';
-import ImageGallery from './components/BusinessCard'; // 경로 확인!
+import Modal from './components/BusinessCard'; // 경로 확인!
 
 function App() {
-  return <ImageGallery />;
+  return <Modal />;
 }
 
 export default App;
