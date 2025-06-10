@@ -2,13 +2,13 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import ModalWindow from "./components/day7/modalWindow.jsx"
+import AnswerNum from "./components/day8/answerNum.jsx"
 
 function App() {
   return (
-    <div className="modalWindow">
+    <div className="answernum">
       <main>
-        <ModalWindow />
+        <AnswerNum />
       </main>
     </div>
   );
