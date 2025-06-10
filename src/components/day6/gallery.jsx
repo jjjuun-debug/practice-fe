@@ -9,7 +9,7 @@ function Gallery() {
   ]);
   const [selectedId, setSelectedId] = useState(null);
 
-  function handleClick(id) { //클릭된 이미지의 아이디와 useState를 활용해 selectedId의 값에 id를 저장장
+  function handleClick(id) { //클릭된 이미지의 아이디와 useState를 활용해 selectedId의 값에 id를 저장
     setSelectedId(id);
   }
 

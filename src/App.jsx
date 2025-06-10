@@ -2,13 +2,13 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Gallery from "./components/day6/gallery.jsx"
+import ModalWindow from "./components/day7/modalWindow.jsx"
 
 function App() {
   return (
-    <div className="gallery">
+    <div className="modalWindow">
       <main>
-        <Gallery />
+        <ModalWindow />
       </main>
     </div>
   );
