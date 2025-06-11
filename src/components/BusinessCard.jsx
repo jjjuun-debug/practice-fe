@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Modal({ onClose }) {
-  // 바깥 영역 클릭 시 닫기
   const handleBackgroundClick = (e) => {
     if (e.target.className === 'modal-background') {
       onClose();
@@ -31,8 +30,8 @@ function Modal({ onClose }) {
           minWidth: '300px'
         }}
       >
-        <h2>모달창이에요!</h2>
-        <p>이건 모달 컴포넌트로 분리된 창입니다.</p>
+        <h2>🪟 모달창입니다!</h2>
+        <p>이건 별도로 만든 컴포넌트예요.</p>
         <button onClick={onClose}>닫기</button>
       </div>
     </div>
