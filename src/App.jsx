@@ -1,23 +1,40 @@
 import React, { useState } from 'react';
-import Modal from './components/Modal';
+
 
 export default function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [value, setSearchValue] = useState("");
 
+  const randNum = Math.random()  * 100;
+  const randFloor = Math.floor(randNum);
+
+  const r = randFloor;
+  const change = (e) => {
+    setSearchValue(e.target.value);
+  };
   return (
-    <div className="p-10 text-center">
-      <h1 className="text-2xl font-bold mb-6">Day 7: 모달창 만들기</h1>
-      <button
-        onClick={() => setIsModalOpen(true)}
-        className="bg-blue-600 text-white px-6 py-3 rounded"
-      >
-        모달 열기
-      </button>
-
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2 className="text-lg font-semibold mb-2">이것은 모달창입니다</h2>
-        <p>배경을 클릭하거나 Esc 키로도 닫을 수 있어요.</p>
-      </Modal>
+    <div>
+      <input
+      value = {value}
+      placeholder = "값을 입력해주세요."
+      onChange = {change}
+    />
+    <button onClick={()=>{
+      console.log("입력값 : ", value,"\n");
+      console.log("값 ",r,"\n");
+    }}>
+      값 사용
+    </button>
+    <div>
+      {
+        r==value
+        ? <p>정답을 맞추셨습니다.</p>
+        : null
+      }
     </div>
+    
+    </div>
+
+   
+    
   );
 }
