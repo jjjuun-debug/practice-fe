@@ -1,8 +1,8 @@
 import React from 'react';
-import Modal from './components/BusinessCard'; // 경로 확인!
+import WeatherCard from './components/BusinessCard'; // 경로 확인!
 
 function App() {
-  return <Modal />;
+  return <WeatherCard />;
 }
 
 export default App;

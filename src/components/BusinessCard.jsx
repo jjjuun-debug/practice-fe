@@ -1,41 +1,20 @@
 import React from 'react';
 
-function Modal({ onClose }) {
-  const handleBackgroundClick = (e) => {
-    if (e.target.className === 'modal-background') {
-      onClose();
-    }
-  };
-
+function WeatherCard({ city, temp, condition }) {
   return (
-    <div
-      className="modal-background"
-      onClick={handleBackgroundClick}
-      style={{
-        position: 'fixed',
-        top: 0, left: 0,
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: 'white',
-          padding: '20px',
-          borderRadius: '10px',
-          minWidth: '300px'
-        }}
-      >
-        <h2>🪟 모달창입니다!</h2>
-        <p>이건 별도로 만든 컴포넌트예요.</p>
-        <button onClick={onClose}>닫기</button>
-      </div>
+    <div style={{
+      border: '1px solid lightgray',
+      borderRadius: '10px',
+      padding: '20px',
+      margin: '10px',
+      width: '200px',
+      backgroundColor: '#f0f8ff'
+    }}>
+      <h2>{city}</h2>
+      <p>온도: {temp}°C</p>
+      <p>날씨: {condition}</p>
     </div>
   );
 }
 
-export default Modal;
+export default WeatherCard;
