@@ -1,28 +1,16 @@
 import logo from './logo.svg';
-import React from 'react';
 import './App.css';
-
-function BusinessCard(a){
-  return (
-      <div>
-        <h4>명함 </h4>
-        <p className="list">이름: {a.name} </p>
-        <p className="list">나이: {a.age} </p>
-        <p className="list">직업: {a.job} </p>
-        <p className="list">전화번호: {a.num} </p>
-      </div>
-  )
-}
+import { useState } from 'react';
 
 function App() {
+
+  let [ 좋아요, 변경] = useState(0);
+
   return (
     <div>
-      <BusinessCard
-        name="이성준"
-        age="20살"
-        job="대학생"
-        num="010-xxxx-xxxx"
-      />
+      <div>
+        <h4><span onClick={()=>{ 변경(좋아요+1) }}>❤️ 좋아요</span> {좋아요}</h4>
+      </div>
     </div>
   );
 }
