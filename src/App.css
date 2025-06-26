@@ -2,15 +2,20 @@
   text-align: center;
 }
 
-div {
-  box-sizing: border-box;
+div{
+  width: 800px;
+  height: 100px;
+  background-color: white;
+  margin: 0 auto;
+}
+.box{
+  border: solid 2px;
+}
 
-}
-.list {
-  padding-left: 20px;
-  text-align: left;
-  border-bottom: 1px solid grey;
-}
+
+
+
+
 
 .App-logo {
   height: 40vmin;
