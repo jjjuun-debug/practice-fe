@@ -1,42 +1,28 @@
 import React, { useState } from 'react';
 
-export default function Input() {
-  const [인풋, 인풋변경] = useState('');
-  const [할일, 할일변경] = useState([]);
-
-  const send = () => {
-    const copy = { id: Date.now(), text: 인풋 };
-    할일변경([...할일, copy]);
-    인풋변경('');
-  };
-
-      const 삭제 = (id) => {
-      할일변경(할일.filter((item) => item.id !== id));
-    };
+function App() {
+  const [탭, 탭변경] = useState(1);
 
   return (
     <div>
-      <h2>TODO LIST</h2>
-      <div>
-        <input
-          type="text"
-          placeholder="할 일 입력"
-          value={인풋}
-          onChange={(e) => 인풋변경(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && send()}
-        />
+      <h2>탭</h2>
+      <button onClick={() => 탭변경(1)}>1</button>
+      <button onClick={() => 탭변경(2)}>2</button>
+      <button onClick={() => 탭변경(3)}>3</button>
 
-        <button onClick={send}>추가</button>
+      {탭 === 1 && (
+        <div style={{ backgroundColor: 'red', height: '200px', marginTop: '10px' }}>{탭}</div>
+      )}
 
-      </div>
-        <div>
-          {할일.map((a) => (
-          <div key={a.id}>
-            <span>‧ {a.text} </span>
-            <button onClick={()=>삭제(a.id)}>삭제</button>
-          </div>
-          ))}
-        </div>
+      {탭 === 2 && (
+        <div style={{ backgroundColor: 'blue', height: '200px', marginTop: '10px' }}>{탭}</div>
+      )}
+
+      {탭 === 3 && (
+        <div style={{ backgroundColor: 'green', height: '200px', marginTop: '10px' }}>{탭}</div>
+      )}
     </div>
   );
 }
+
+export default App;
