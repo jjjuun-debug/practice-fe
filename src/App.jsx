@@ -1,49 +1,33 @@
 import React, { useState } from 'react';
 
 export default function App() {
-  const images = [
-    {
-      id: 1,
-      src: 'https://previews.123rf.com/images/martialred/martialred1507/martialred150700888/42620709-landscape-photo-image-flat-icon-for-apps-and-websites.jpg',
-    },
-    {
-      id: 2,
-      src: 'https://previews.123rf.com/images/martialred/martialred1507/martialred150700661/42613290-landscape-photo-image-flat-icon-for-apps-and-websites.jpg',
-    },
-    {
-      id: 3,
-      src: 'https://previews.123rf.com/images/tkacchuk/tkacchuk1412/tkacchuk141200886/34580948-photo-archive-icon-on-white-background-vector-illustration.jpg',
-    },
-  ];
-
-  const [확대, 확대변경] = useState();
+  const [모달창, 모달변경] = useState(false);
 
   return (
     <div>
-      <div>
-        {images.map((i) => (
-          <img
-            key={i.id}
-            src={i.src}
-            style={{
-              width: '100px',
-              height: '100px',
-              cursor: 'pointer',
-              border: '1px solid #ccc'
-            }}
-            onClick={() => 확대변경(i)}
-          />
-        ))}
-      </div>
+      <button onClick={() => 모달변경(true)}>모달 열기</button>
 
-      {확대 && (
-        <div>
-          <img
-            src={확대.src}
-            style={{ width: '400px', height: 'auto', border: '2px solid black' }}
-          />
+      {모달창 && (
+        <div style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0, bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+          <div style={{
+            backgroundColor: 'white',
+            padding: '30px',
+            textAlign: 'center',
+            minWidth: '300px'
+            }}>
+            <h4>모달창</h4>
+            <p>asdasdasdasd</p>
+            <button onClick={() => 모달변경(false)}>닫기</button>
+          </div>
         </div>
       )}
     </div>
   );
-} 
+}
