@@ -1,31 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 
 export default function App() {
-  const [모달창, 모달변경] = useState(false);
+
+  const random = useRef(Math.floor(Math.random() * 100) + 1);
+
+  const [입력, 입력변경] = useState('');
+  const [비교, 비교변경] = useState(false);
+  const [메시지, 메시지변경] = useState('');
+  
+  const 결과 = () => {
+    const 숫자 = parseInt(입력);
+
+    비교변경(true);
+
+    if (숫자 === random.current) { 메시지변경('맞췄습니다!'); } 
+    else {
+      메시지변경('틀렸습니다. 다시 시도하세요.');
+      setTimeout(() => {비교변경(false);}, 1000);
+    }
+  }
 
   return (
     <div>
-      <button onClick={() => 모달변경(true)}>모달 열기</button>
-
-      {모달창 && (
-        <div style={{
-          position: 'fixed',
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-          <div style={{
-            backgroundColor: 'white',
-            padding: '30px',
-            textAlign: 'center',
-            minWidth: '300px'
-            }}>
-            <h4>모달창</h4>
-            <p>asdasdasdasd</p>
-            <button onClick={() => 모달변경(false)}>닫기</button>
-          </div>
+      <h2> 숫자 맞추기 게임 </h2>
+      <p>{random.current}</p>
+      <input
+        type="text"
+        placeholder="숫자를 입력하세요."
+        value={입력}
+        onChange={(e) => 입력변경(e.target.value)}
+         onKeyDown={(e) => e.key === 'Enter' && 결과()}
+      />
+      <button onClick={ 결과 }>제출</button>
+      {비교 && (
+        <div>
+          <p>{메시지}</p>
         </div>
       )}
     </div>
